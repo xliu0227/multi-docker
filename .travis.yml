@@ -4,14 +4,15 @@ services:
 
 before_install:
   - docker build -t kyrie/react-test -f ./client/Dockerfile.dev ./client
+
 script:
-  - docker run -e CI=true USERNAME/react-test npm test -- --coverage
+  - docker run -e CI=true kyrie/react-test npm test
 
 after_success:
   - docker build -t kyrie/multi-client ./client
   - docker build -t kyrie/multi-nginx ./nginx
-  - docker build -t kyrie/multi-server ./server
-  - docker build -t kyrie/multi-worker ./worker
+  - docker build -t kyire/multi-server ./server
+  - docker build -t kyire/multi-worker ./worker
 
 #log us in to docker CLI
 - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" -- password-stdin
@@ -20,4 +21,4 @@ after_success:
 - docker push kyrie/multi-client
 - docker push kyrie/multi-nginx
 - docker push kyrie/multi-server
-- docker push kyrie/multi-worker
+- docker push kyire/multi-worker

@@ -9,17 +9,17 @@ before_install:
 script: 
   - docker run kyrie/react-test npm test -- --coverage
 
-# after_success: 
-#   - docker build -t kyrieworkhard/multi-client ./client
-#   - docker build -t kyrieworkhard/multi-nginx ./nginx
-#   - docker build -t kyrieworkhard/multi-server ./server
-#   - docker build -t kyrieworkhard/multi-worker ./worker
+after_success: 
+  - docker build -t kyrie/multi-client ./client
+  - docker build -t kyrie/multi-nginx ./nginx
+  - docker build -t kyrie/multi-server ./server
+  - docker build -t kyrie/multi-worker ./worker
 
-# #log us in to docker CLI
-# - echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
+#log us in to docker CLI
+- echo "$DOCKER_PW" | docker login -u "$DOCKER_ID" --password-stdin
 
-# # Take those images and push them to docker hub
-# - docker push kyrieworkhard/multi-client
-# - docker push kyrieworkhard/multi-nginx
-# - docker push kyrieworkhard/multi-server
-# - docker push kyrieworkhard/multi-worker
+# Take those images and push them to docker hub
+- docker push kyrie/multi-client
+- docker push kyrie/multi-nginx
+- docker push kyrie/multi-server
+- docker push kyrie/multi-worker

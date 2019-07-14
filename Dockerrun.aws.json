@@ -28,10 +28,11 @@
             "portMappings":[
                 {
                     "hostPort": 80,
-                    "contianerPort": 80
+                    "containerPort": 80
                 }
             ],
             "links":["client", "server"]
         }
+
     ]
 }

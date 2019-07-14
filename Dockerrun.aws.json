@@ -1,0 +1,37 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions":[
+        {
+            "name": "client",
+            "image": "kyrieworkhard/multi-client",
+            "hostname": "client",
+            "essential": false
+        },
+
+        {
+            "name": "server",
+            "image": "kyrieworkhard/multi-server",
+            "hostname": "api",
+            "essential":false
+        },
+        {
+            "name": "worker",
+            "image":"kyrieworkhard/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "kyrieworkhard/multi-nginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings":[
+                {
+                    "hostPort": 80,
+                    "contianerPort": 80
+                }
+            ],
+            "links":["client", "server"]
+        }
+    ]
+}

@@ -52,17 +52,3 @@ services:
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
-
-deploy:
-  provider: elasticbeanstalk
-  region: "us-west-2"
-  app: "multi-docker"
-  env: "MultiDocker-env"
-  bucket_name: "elasticbeanstalk-us-west-2-487018625579"
-  bucket_path: "docker-multi"
-  on:
-    branch: master
-  access_key_id: 
-    secure: $AWS_ACCESS_KEY
-  secret_access_key: 
-    secure: $AWS_SECRET_KEY
